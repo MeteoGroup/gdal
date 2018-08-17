@@ -284,6 +284,9 @@ bool GRIB2Section3Writer::WriteGeographic()
     if( dfLLX < 0 )
     {
         dfLLX += 360;
+    }
+    if( dfURX < 0 )
+    {
         dfURX += 360;
     }
 
