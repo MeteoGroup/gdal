@@ -18,4 +18,4 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker build -t gdal --squash .
+      - docker build -t gdal:latest --squash .
