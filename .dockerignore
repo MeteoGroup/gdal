@@ -1,0 +1,11 @@
+.git
+
+.build
+
+.env_local
+
+**/__pycache__/
+**/.cache/
+**/.pytest_cache/
+
+nohup.out

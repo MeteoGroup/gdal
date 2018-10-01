@@ -1,0 +1,21 @@
+---
+workspace:
+  base: /drone
+  path: src
+
+pipeline:
+  get_packages:
+    image: alpine/git
+    environment:
+      - PYTHON_UTILS_COMMIT_ID=a0aecb9f316e7b390325be0f9977277ef8cbd049
+    commands:
+      - git clone https://github.com/meteogroup/python-utils
+      - cd python-utils
+      - git checkout $PYTHON_UTILS_COMMIT_ID
+
+  build:
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -t gdal --squash .
