@@ -5,11 +5,11 @@ workspace:
 
 pipeline:
   get_packages:
-    image: alpine/git
+    image: plugins/git 
     environment:
       - PYTHON_UTILS_COMMIT_ID=a0aecb9f316e7b390325be0f9977277ef8cbd049
     commands:
-      - git clone https://github.com/meteogroup/python-utils
+      - git clone https://github.com/MeteoGroup/python-utils.git
       - cd python-utils
       - git checkout $PYTHON_UTILS_COMMIT_ID
 
