@@ -1,0 +1,26 @@
+---
+workspace:
+  base: /drone
+  path: src
+
+clone:
+  git:
+    image: plugins/git
+    submodule_override:
+      python-utils: https://github.com/MeteoGroup/python-utils.git
+
+pipeline:
+  get_packages:
+    image: plugins/git 
+    environment:
+      - PYTHON_UTILS_COMMIT_ID=a0aecb9f316e7b390325be0f9977277ef8cbd049
+    commands:
+      - cd python-utils
+      - git checkout $PYTHON_UTILS_COMMIT_ID
+
+  build:
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -t gdal:latest --squash .
